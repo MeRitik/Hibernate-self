@@ -8,14 +8,13 @@ import com.hib.oneToOne.entities.Passport;
 import com.hib.oneToOne.entities.Person;
 import com.hib.oneToOne.services.PassportService;
 import com.hib.oneToOne.services.PersonService;
-import jakarta.persistence.EntityManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Optional;
+import java.util.List;
 
 @SpringBootApplication
 public class HibernateSelfApplication {
@@ -40,6 +39,11 @@ public class HibernateSelfApplication {
 //            createInstructorWithCourses(instructorRepo, courseRepo);
               findInstructorWithCourses(instructorRepo, courseRepo);
         };
+    }
+
+    private void findCoursesWithInsId(CourseRepo courseRepo) {
+        List<Course> courses = courseRepo.getByInsId(1);
+        courses.forEach(System.out::println);
     }
 
     private void findInstructorWithCourses(InstructorRepo instructorRepo, CourseRepo courseRepo) {
