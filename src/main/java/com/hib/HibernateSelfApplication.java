@@ -34,23 +34,24 @@ public class HibernateSelfApplication {
 ***/
     public void createPerson(PersonService personService, PassportService passportService) {
         Person person = new Person();
-        person.setFirstName("Aman");
-        person.setLastName("Bharat");
+        person.setFirstName("Abhi");
+        person.setLastName("Singh");
 
         Passport passport = new Passport();
-        passport.setPassportNo("P12325");
+        passport.setPassportNo("P69420");
         person.setPassport(passport);
 
-        passportService.save(passport);
+//        passportService.save(passport); // Not required in CascadeType.ALL
         personService.save(person);
 
         System.out.println("Person have been saved");
     }
 
     public void deletePerson(PersonService personService, PassportService passportService) {
-        Integer id = 2;
+        Integer id = 4;
         personService.delete(id);
         System.out.printf("Person with id %d has been deleted%n", id);
     }
+
 
 }

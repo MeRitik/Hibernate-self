@@ -13,6 +13,14 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    @OneToOne
+    /** 1. (cascade = CascadeType.ALL) Applies all operations (PERSIST, MERGE, REMOVE, REFRESH, DETACH).
+     *  2. (cascade = CascadeType.None) // Default is CascadeType.NONE
+     *  3. (cascade = {CascadeType.DETACH, CascadeType.MERGE,
+     *              CascadeType.PERSIST, CascadeType.REFRESH})
+     *  doesn't delete enable selective cascading
+     */
+
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                         CascadeType.PERSIST, CascadeType.REFRESH})
     private Passport passport;
 }
