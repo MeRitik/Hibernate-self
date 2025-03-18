@@ -45,9 +45,8 @@ public class HibernateSelfApplication {
     private void findInstructorWithCourses(InstructorRepo instructorRepo, CourseRepo courseRepo) {
         Instructor instructor = instructorRepo.findById(1L).orElse(null);
         System.out.println(instructor);
-        System.out.println(" ---------------------- ");
         assert instructor != null;
-        System.out.println(instructor.getCourses());
+        courseRepo.findByInstructorId(instructor.getId()).forEach(System.out::println);
     }
 
     private void createInstructorWithCourses(InstructorRepo instructorRepo, CourseRepo courseRepo) {

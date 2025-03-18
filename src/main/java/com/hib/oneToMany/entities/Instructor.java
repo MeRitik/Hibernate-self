@@ -21,9 +21,10 @@ public class Instructor {
     private String lastName;
     private String email;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "instructor", cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    private List<Course> courses;
+                        CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    private List<Course> courses; // LAZY is default in @OneToMany
 
 
     public void add(Course course) {
