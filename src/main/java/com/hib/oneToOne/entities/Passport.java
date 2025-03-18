@@ -11,4 +11,7 @@ public class Passport {
     private Integer id;
 
     private String passportNo;
+
+    @OneToOne
+    private Person person;
 }

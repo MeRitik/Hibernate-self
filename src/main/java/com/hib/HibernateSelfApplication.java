@@ -20,8 +20,8 @@ public class HibernateSelfApplication {
     @Bean
     CommandLineRunner commandLineRunner(ApplicationContext ctx, PersonService personService, PassportService passportService) {
         return args -> {
-//            createPerson(personService, passportService);
-            deletePerson(personService, passportService);
+            createPerson(personService, passportService);
+//            deletePerson(personService, passportService);
         };
     }
 
@@ -40,6 +40,7 @@ public class HibernateSelfApplication {
         Passport passport = new Passport();
         passport.setPassportNo("P69420");
         person.setPassport(passport);
+        passport.setPerson(person);
 
 //        passportService.save(passport); // Not required in CascadeType.ALL
         personService.save(person);

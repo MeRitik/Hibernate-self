@@ -21,6 +21,6 @@ public class Person {
      */
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
-                         CascadeType.PERSIST, CascadeType.REFRESH})
+                         CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "person")
     private Passport passport;
 }
