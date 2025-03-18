@@ -1,10 +1,13 @@
 package com.hib.oneToOne.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,7 @@ public class Person {
      */
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
-                         CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "person")
+                         CascadeType.PERSIST, CascadeType.REFRESH},
+                         mappedBy = "person")
     private Passport passport;
 }
